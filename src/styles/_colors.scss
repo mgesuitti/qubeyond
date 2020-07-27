@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$qubeyond-app-primary: mat-palette($mat-red);
+$qubeyond-app-accent:  mat-palette($mat-cyan);
+$qubeyond-app-warn:    mat-palette($mat-deep-orange);
+$qubeyond-app-theme: mat-dark-theme($qubeyond-app-primary, $qubeyond-app-accent, $qubeyond-app-warn);
+
+@include angular-material-theme($qubeyond-app-theme);

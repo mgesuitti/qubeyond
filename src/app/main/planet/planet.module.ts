@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlanetComponent } from './planet.component';
 import { PlanetRoutingModule } from './planet-routing.module';
-import { MatButtonModule } from '@angular/material/button';
+import { MaterialSharedModule } from 'src/app/shared/material/material.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   imports: [
     CommonModule,
-    MatButtonModule,
+    MaterialSharedModule,
     PlanetRoutingModule
   ]
 })

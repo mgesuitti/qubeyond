@@ -1,6 +1,7 @@
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 @import 'colors';
 @import 'sidebar';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;900&display=swap');
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Nunito Sans', "Helvetica Neue", sans-serif; }

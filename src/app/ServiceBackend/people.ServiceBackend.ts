@@ -22,4 +22,9 @@ export class PeopleServiceBackend {
       }
       return resDTO;
    }
+
+   public async getPeopleCount(): Promise<number> {
+      const res = await this.http.get(Constants.apiURL + '/planets/').toPromise();
+      return res['count'];
+   }
 }

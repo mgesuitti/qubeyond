@@ -21,4 +21,9 @@ export class SpeciesServiceBackend {
       }
       return resDTO;
    }
+
+   public async getSpeciesCount(): Promise<number> {
+      const res = await this.http.get(Constants.apiURL + '/species/').toPromise();
+      return res['count'];
+   }
 }

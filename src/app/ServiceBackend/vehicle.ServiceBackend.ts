@@ -21,4 +21,9 @@ export class VehicleServiceBackend {
       }
       return resDTO;
    }
+
+   public async getVehiclesCount(): Promise<number> {
+      const res = await this.http.get(Constants.apiURL + '/vehicles/').toPromise();
+      return res['count'];
+   }
 }

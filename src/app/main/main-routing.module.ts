@@ -7,10 +7,6 @@ const routes: Routes = [
     path: '', component: MainComponent,
     children: [
       {
-        path: '',
-        pathMatch: 'full'
-      },
-      {
         path: 'planets',
         loadChildren: () => import('./planets/planets.module').then(m => m.PlanetsModule),
       },
@@ -33,6 +29,9 @@ const routes: Routes = [
       {
         path: 'people',
         loadChildren: () => import('./people/people.module').then(m => m.PeopleModule),
+      },
+      { path: '', 
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) 
       }
     ]
   },

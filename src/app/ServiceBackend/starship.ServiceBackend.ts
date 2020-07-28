@@ -21,4 +21,9 @@ export class StarshipServiceBackend {
       }
       return resDTO;
    }
+
+   public async getStarshipsCount(): Promise<number> {
+      const res = await this.http.get(Constants.apiURL + '/starships/').toPromise();
+      return res['count'];
+   }
 }

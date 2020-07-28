@@ -21,4 +21,9 @@ export class FilmServiceBackend {
       }
       return resDTO;
    }
+
+   public async getFilmsCount(): Promise<number> {
+      const res = await this.http.get(Constants.apiURL + '/films/').toPromise();
+      return res['count'];
+   }
 }

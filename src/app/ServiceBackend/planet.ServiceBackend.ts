@@ -21,4 +21,9 @@ export class PlanetServiceBackend {
       }
       return resDTO;
    }
+
+   public async getPlanetsCount(): Promise<number> {
+      const res = await this.http.get(Constants.apiURL + '/people/').toPromise();
+      return res['count'];
+   }
 }

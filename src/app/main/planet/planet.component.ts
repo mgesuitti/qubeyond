@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PeopleServiceBackend } from 'src/app/ServiceBackend/people.ServiceBackend';
+import { PeopleDTO } from 'src/app/ModelDTO/people.DTO';
 
 @Component({
   selector: 'app-planet',
@@ -7,16 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanetComponent implements OnInit {
 
-  public data: Array<number>;
+  public data: Array<PeopleDTO>;
 
-  constructor() { 
+  constructor(private peopleServiceBackend: PeopleServiceBackend) { 
     this.data = new Array();
   }
 
   ngOnInit() {
-    while(this.data.length < 10){
-        var r = Math.floor(Math.random() * 100) + 1;
-        if (this.data.indexOf(r) === -1) this.data.push(r);
-    }
+   this.peopleServiceBackend.getPeople().then(data => {
+      this.data = data;
+   });
   }
 }

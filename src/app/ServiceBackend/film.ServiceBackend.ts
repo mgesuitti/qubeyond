@@ -1,22 +1,21 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from 'src/app/shared/constants';
-import { PlanetDTO } from '../ModelDTO/planet.DTO';
+import { FilmDTO } from '../ModelDTO/film.DTO';
 
 @Injectable({
    providedIn: 'root'
 })
-export class PeopleServiceBackend {
+export class FilmServiceBackend {
 
    constructor(protected http: HttpClient) { }
 
-   public async getPeople(): Promise<Array<PlanetDTO>> {
-      const res = await this.http.get(Constants.apiURL + '/people/').toPromise();
+   public async getFilms(): Promise<Array<FilmDTO>> {
+      const res = await this.http.get(Constants.apiURL + '/films/').toPromise();
       const resJson = res['results'];
-      const resDTO = new Array<PlanetDTO>();
+      const resDTO = new Array<FilmDTO>();
       for (const item of resJson) {
-         const itemDTO = new PlanetDTO()
+         const itemDTO = new FilmDTO()
          itemDTO.PrepareDTO(item);
          resDTO.push(itemDTO);
       }

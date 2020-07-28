@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlanetComponent } from './planet.component';
-import { PlanetRoutingModule } from './planet-routing.module';
+import { PlanetsComponent } from './planets.component';
+import { PlanetsRoutingModule } from './planets-routing.module';
 import { MaterialSharedModule } from 'src/app/shared/material/material.module';
 
 @NgModule({
   declarations: [
-    PlanetComponent
+    PlanetsComponent
   ],
   imports: [
     CommonModule,
     MaterialSharedModule,
-    PlanetRoutingModule
+    PlanetsRoutingModule
   ]
 })
-export class PlanetModule { }
+export class PlanetsModule { }

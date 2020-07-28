@@ -3,11 +3,11 @@ import { PeopleServiceBackend } from 'src/app/ServiceBackend/people.ServiceBacke
 import { PeopleDTO } from 'src/app/ModelDTO/people.DTO';
 
 @Component({
-  selector: 'app-planet',
-  templateUrl: './planet.component.html',
-  styleUrls: ['./planet.component.scss']
+  selector: 'app-people',
+  templateUrl: './people.component.html',
+  styleUrls: ['./people.component.scss']
 })
-export class PlanetComponent implements OnInit {
+export class PeopleComponent implements OnInit {
 
   public data: Array<PeopleDTO>;
 

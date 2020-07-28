@@ -1,22 +1,21 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from 'src/app/shared/constants';
-import { PlanetDTO } from '../ModelDTO/planet.DTO';
+import { StarshipDTO } from '../ModelDTO/starship.DTO';
 
 @Injectable({
    providedIn: 'root'
 })
-export class PeopleServiceBackend {
+export class StarshipServiceBackend {
 
    constructor(protected http: HttpClient) { }
 
-   public async getPeople(): Promise<Array<PlanetDTO>> {
-      const res = await this.http.get(Constants.apiURL + '/people/').toPromise();
+   public async getStarships(): Promise<Array<StarshipDTO>> {
+      const res = await this.http.get(Constants.apiURL + '/starships/').toPromise();
       const resJson = res['results'];
-      const resDTO = new Array<PlanetDTO>();
+      const resDTO = new Array<StarshipDTO>();
       for (const item of resJson) {
-         const itemDTO = new PlanetDTO()
+         const itemDTO = new StarshipDTO()
          itemDTO.PrepareDTO(item);
          resDTO.push(itemDTO);
       }

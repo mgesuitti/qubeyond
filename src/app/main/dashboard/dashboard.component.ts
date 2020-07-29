@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   public numbersMap: {name: string; value: number} [];
+
   colorScheme = {
     domain: ['#83c1fa', '#8ae566', '#ffeb66', '#b29efa', '#b566b3', '#ff667c', '#ffc166','8ae566']
   };

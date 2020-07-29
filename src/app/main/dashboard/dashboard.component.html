@@ -5,7 +5,8 @@
     </div>
     <div class="d-flex flex-column flex-grow-1">
         <p *ngIf="numbersMap.length == 0">Please wait a few seconds! We are loading an amazing data!</p>
-        <ngx-charts-number-card  matTooltip="Click on me!" 
+        <p *ngIf="numbersMap.length == 0">Please open the project with Google Chrome. Swapi.dev has problems with CORS policy.</p>
+        <ngx-charts-number-card *ngIf="numbersMap.length > 0"  matTooltip="Click on me!" 
         [scheme]="colorScheme" [results]="numbersMap" [animations]="true"
         [innerPadding]="8" (select)="onSelectNumber($event)">
         </ngx-charts-number-card>

@@ -21,6 +21,12 @@ export class PeopleComponent implements OnInit {
    });
   }
 
+  public next() {
+    this.peopleServiceBackend.getPeople(true).then(data => {
+      this.data = this.data.concat(data);
+   });
+  }
+
   public imageUrl(people: PeopleDTO): string {
     return 'assets/img/people/' + people.name + '.jpg';
   }

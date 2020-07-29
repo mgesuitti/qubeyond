@@ -20,4 +20,10 @@ export class StarshipsComponent implements OnInit {
       this.data = data;
    });
   }
+
+  public next() {
+    this.starshipsServiceBackend.getStarships(true).then(data => {
+      this.data = this.data.concat(data);
+   });
+  }
 }

@@ -8,11 +8,24 @@ import { VehicleDTO } from '../ModelDTO/vehicle.DTO';
 })
 export class VehicleServiceBackend {
 
+   private next: string;
+
    constructor(protected http: HttpClient) { }
 
-   public async getVehicles(): Promise<Array<VehicleDTO>> {
-      const res = await this.http.get(Constants.apiURL + '/vehicles/').toPromise();
+   public async getVehicles(next: boolean = false): Promise<Array<VehicleDTO>> {
+      let url = Constants.apiURL + '/vehicles/';
+      
+      if (next) {
+         if (!this.next) {
+            return new Array<VehicleDTO>();
+         } else {
+            url = this.next;
+         }
+      } 
+
+      const res = await this.http.get(url).toPromise();
       const resJson = res['results'];
+      this.next = res['next'];
       const resDTO = new Array<VehicleDTO>();
       for (const item of resJson) {
          const itemDTO = new VehicleDTO()

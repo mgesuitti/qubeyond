@@ -31,4 +31,10 @@ export class PlanetsComponent implements OnInit {
       disableClose: false
     });
   }
+
+  public next() {
+    this.planetServiceBackend.getPlanets(true).then(data => {
+      this.data = this.data.concat(data);
+   });
+  }
 }

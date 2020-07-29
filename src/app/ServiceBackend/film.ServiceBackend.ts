@@ -8,11 +8,24 @@ import { FilmDTO } from '../ModelDTO/film.DTO';
 })
 export class FilmServiceBackend {
 
+   private next: string;
+
    constructor(protected http: HttpClient) { }
 
-   public async getFilms(): Promise<Array<FilmDTO>> {
-      const res = await this.http.get(Constants.apiURL + '/films/').toPromise();
+   public async getFilms(next: boolean = false): Promise<Array<FilmDTO>> {
+      let url = Constants.apiURL + '/films/';
+      
+      if (next) {
+         if (!this.next) {
+            return new Array<FilmDTO>();
+         } else {
+            url = this.next;
+         }
+      } 
+
+      const res = await this.http.get(url).toPromise();
       const resJson = res['results'];
+      this.next = res['next'];
       const resDTO = new Array<FilmDTO>();
       for (const item of resJson) {
          const itemDTO = new FilmDTO()

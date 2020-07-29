@@ -20,4 +20,10 @@ export class VehiclesComponent implements OnInit {
       this.data = data;
    });
   }
+
+  public next() {
+    this.vehicleServiceBackend.getVehicles(true).then(data => {
+      this.data = this.data.concat(data);
+   });
+  }
 }

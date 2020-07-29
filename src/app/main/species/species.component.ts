@@ -20,4 +20,10 @@ export class SpeciesComponent implements OnInit {
       this.data = data;
    });
   }
+
+  public next() {
+    this.speciesServiceBackend.getSpecies(true).then(data => {
+      this.data = this.data.concat(data);
+   });
+  }
 }

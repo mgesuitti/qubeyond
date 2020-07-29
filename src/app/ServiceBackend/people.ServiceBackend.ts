@@ -9,11 +9,24 @@ import { PeopleDTO } from '../ModelDTO/people.DTO';
 })
 export class PeopleServiceBackend {
 
+   private next: string;
+
    constructor(protected http: HttpClient) { }
 
-   public async getPeople(): Promise<Array<PeopleDTO>> {
-      const res = await this.http.get(Constants.apiURL + '/people/').toPromise();
+   public async getPeople(next: boolean = false): Promise<Array<PeopleDTO>> {
+      let url = Constants.apiURL + '/people/';
+      
+      if (next) {
+         if (!this.next) {
+            return new Array<PeopleDTO>();
+         } else {
+            url = this.next;
+         }
+      } 
+
+      const res = await this.http.get(url).toPromise();
       const resJson = res['results'];
+      this.next = res['next'];
       const resDTO = new Array<PeopleDTO>();
       for (const item of resJson) {
          const itemDTO = new PeopleDTO()

@@ -8,11 +8,24 @@ import { StarshipDTO } from '../ModelDTO/starship.DTO';
 })
 export class StarshipServiceBackend {
 
+   private next: string;
+
    constructor(protected http: HttpClient) { }
 
-   public async getStarships(): Promise<Array<StarshipDTO>> {
-      const res = await this.http.get(Constants.apiURL + '/starships/').toPromise();
+   public async getStarships(next: boolean = false): Promise<Array<StarshipDTO>> {
+      let url = Constants.apiURL + '/starships/';
+      
+      if (next) {
+         if (!this.next) {
+            return new Array<StarshipDTO>();
+         } else {
+            url = this.next;
+         }
+      } 
+
+      const res = await this.http.get(url).toPromise();
       const resJson = res['results'];
+      this.next = res['next'];
       const resDTO = new Array<StarshipDTO>();
       for (const item of resJson) {
          const itemDTO = new StarshipDTO()

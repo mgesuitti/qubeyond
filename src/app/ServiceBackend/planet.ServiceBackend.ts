@@ -8,11 +8,24 @@ import { PlanetDTO } from '../ModelDTO/planet.DTO';
 })
 export class PlanetServiceBackend {
 
+   private next: string;
+
    constructor(protected http: HttpClient) { }
 
-   public async getPlanets(): Promise<Array<PlanetDTO>> {
-      const res = await this.http.get(Constants.apiURL + '/planets/').toPromise();
+   public async getPlanets(next: boolean = false): Promise<Array<PlanetDTO>> {
+      let url = Constants.apiURL + '/planets/';
+      
+      if (next) {
+         if (!this.next) {
+            return new Array<PlanetDTO>();
+         } else {
+            url = this.next;
+         }
+      } 
+
+      const res = await this.http.get(url).toPromise();
       const resJson = res['results'];
+      this.next = res['next'];
       const resDTO = new Array<PlanetDTO>();
       for (const item of resJson) {
          const itemDTO = new PlanetDTO()

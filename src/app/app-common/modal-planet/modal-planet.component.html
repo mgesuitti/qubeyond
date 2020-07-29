@@ -4,6 +4,7 @@
     <p>Population: <strong>{{planet.population}}</strong></p>
     <hr>
     <h2>Residents</h2>
+    <p *ngIf="planet.residents.length == 0">No residents</p>
     <mat-nav-list>
         <mat-list-item *ngFor="let d of planet.residents">
             <app-circle-image [height]="25" [width]="25" [center]="false"
@@ -15,7 +16,7 @@
 </div>
 
 <div mat-dialog-actions class="d-flex flex-row justify-content-end">
-    <button mat-button (click)="close()">Cerrar
+    <button mat-button (click)="close()">Close
         <mat-icon>close</mat-icon>
     </button>
 </div>

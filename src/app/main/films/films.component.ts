@@ -20,4 +20,10 @@ export class FilmsComponent implements OnInit {
       this.data = data;
    });
   }
+
+  public next() {
+    this.filmsServiceBackend.getFilms(true).then(data => {
+      this.data = this.data.concat(data);
+   });
+  }
 }

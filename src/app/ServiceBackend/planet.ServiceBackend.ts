@@ -17,6 +17,7 @@ export class PlanetServiceBackend {
       for (const item of resJson) {
          const itemDTO = new PlanetDTO()
          itemDTO.PrepareDTO(item);
+
          resDTO.push(itemDTO);
       }
       return resDTO;

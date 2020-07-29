@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PeopleComponent } from './people.component';
-import { PeopleRoutingModule } from './people-routing.module';
 import { MaterialSharedModule } from 'src/app/shared/material/material.module';
-import { AppCommonModule } from 'src/app/app-common/app-common.module';
+import { ModalPlanetComponent } from './modal-planet/modal-planet.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
-    PeopleComponent
+    ModalPlanetComponent
   ],
   imports: [
     CommonModule,
     MaterialSharedModule,
-    AppCommonModule,
-    SharedModule,
-    PeopleRoutingModule
+    SharedModule
+  ],
+  exports: [
+    ModalPlanetComponent
+  ],
+  entryComponents: [
+    ModalPlanetComponent
   ]
 })
-export class PeopleModule { }
+export class AppCommonModule { }

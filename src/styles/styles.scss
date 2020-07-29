@@ -32,3 +32,12 @@ body { margin: 0; font-family: 'Nunito Sans', "Helvetica Neue", sans-serif; }
     -ms-flex-positive: 1 !important;
     flex-grow: 1 !important;
 }
+
+.justify-content-end {
+    -ms-flex-pack: justify !important;
+    justify-content: flex-end !important;
+}
+
+.ml-1 {
+    margin-left: 1rem;
+}

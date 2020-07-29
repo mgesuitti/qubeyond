@@ -1,0 +1,5 @@
+<div [style.width.px]="width" [style.height.px]="height" class="image-cropper" [class.bordered-img]="withBorder">
+    <img *ngIf="imageSource" [style.width.px]="width" [style.height.px]="height" [style.margin-left]="center ? '-25%' : 0" (error)="errorHandler($event)" [src]="imageSource" alt="circle-image"
+        loading="lazy" class="circle-pic">
+    <label *ngIf="!imageSource">No image</label>
+</div>

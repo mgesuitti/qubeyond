@@ -1,0 +1,21 @@
+<div mat-dialog-content>
+    <h1>Planet {{planet.name}}</h1>
+    <hr>
+    <p>Population: <strong>{{planet.population}}</strong></p>
+    <hr>
+    <h2>Residents</h2>
+    <mat-nav-list>
+        <mat-list-item *ngFor="let d of planet.residents">
+            <app-circle-image [height]="25" [width]="25" [center]="false"
+                [imageSource]="imageUrl(d)" [withBorder]="true" [center]="false">
+            </app-circle-image>
+            <span class="ml-1">{{d.name}}</span>
+        </mat-list-item>
+    </mat-nav-list>
+</div>
+
+<div mat-dialog-actions class="d-flex flex-row justify-content-end">
+    <button mat-button (click)="close()">Cerrar
+        <mat-icon>close</mat-icon>
+    </button>
+</div>

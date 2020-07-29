@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanetServiceBackend } from 'src/app/ServiceBackend/planet.ServiceBackend';
 import { PlanetDTO } from 'src/app/ModelDTO/planet.DTO';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalPlanetComponent } from 'src/app/app-common/modal-planet/modal-planet.component';
 
 @Component({
   selector: 'app-planets',
@@ -11,7 +13,8 @@ export class PlanetsComponent implements OnInit {
 
   public data: Array<PlanetDTO>;
 
-  constructor(private planetServiceBackend: PlanetServiceBackend) { 
+  constructor(private planetServiceBackend: PlanetServiceBackend
+    , public dialog: MatDialog) { 
     this.data = new Array();
   }
 
@@ -19,5 +22,13 @@ export class PlanetsComponent implements OnInit {
    this.planetServiceBackend.getPlanets().then(data => {
       this.data = data;
    });
+  }
+
+  public openDetail(planet: PlanetDTO) {
+    this.dialog.open(ModalPlanetComponent, {
+      data: { planet: planet },
+      width: '500px',
+      disableClose: false
+    });
   }
 }

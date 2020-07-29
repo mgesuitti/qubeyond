@@ -20,4 +20,8 @@ export class PeopleComponent implements OnInit {
       this.data = data;
    });
   }
+
+  public imageUrl(people: PeopleDTO): string {
+    return 'assets/img/people/' + people.name + '.jpg';
+  }
 }
